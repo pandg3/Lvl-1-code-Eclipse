@@ -9,6 +9,8 @@ import java.awt.Label;
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 import org.jointheleague.graphical.robot.Robot;
 
 	
@@ -16,15 +18,15 @@ import org.jointheleague.graphical.robot.Robot;
 	public class Feedtherobot2player implements KeyEventDispatcher
 	{
 Robot rob= new Robot();
-Robot canibalvictim= new Robot();
-
+Robot canibalvictim = new Robot();
 		// 1. Decide where to put the food by setting these variables
 		int foodLocationX;
 		int foodLocationY;
+		
 		// If the food does not show up, you need to switch to Java 1.6
 
 		// 2. Choose a character for your food or leave it as *
-		Component food = new Label("*");
+		
 
 		private void goUp()
 		{
@@ -53,9 +55,16 @@ Robot canibalvictim= new Robot();
 
 		private void checkIfFoodFound() throws Exception
 		{
-			//int tortoiseLocationX = Tortoise.getX();
+			int robY =rob.getY();
+			int robX =rob.getX();
+			int victimX =canibalvictim.getX();
+			int victimY =canibalvictim.getY();
+			if (robY == victimY & robX ==victimX){
+				JOptionPane.showMessageDialog(null, "Canibal wins!");
+			}
+			
 			//int tortoiseLocationY = Tortoise.getY();
-
+  
 			// 7. if tortoise is near the food
 				// say something. Hint: Runtime.getRuntime().exec("say yum")
 		}
@@ -129,7 +138,7 @@ Robot canibalvictim= new Robot();
 
 		private void moveFood()
 		{
-			food.setLocation(foodLocationX, foodLocationY);
+			//food.setLocation(foodLocationX, foodLocationY);
 			//window.add(food);
 		}
 
@@ -148,7 +157,8 @@ Robot canibalvictim= new Robot();
 			//Tortoise.show();
 			//Tortoise.setSpeed(10);
 	//Tortoise.getBackgroundWindow().setBackground(Colors.getRandomColor());
-
+			canibalvictim.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/Derp");
+rob.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/ROBKILLER");
 		}
 
 		private void feedTheTortoise()
