@@ -8,6 +8,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.Label;
 import java.awt.event.KeyEvent;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,11 @@ import org.jointheleague.graphical.robot.Robot;
 	{
 Robot rob= new Robot();
 Robot canibalvictim = new Robot();
+Robot timer = new Robot();
+int ranX = new Random().nextInt(100)*20;
+int ranY = new Random().nextInt(50)*20;
+int ranXx = new Random().nextInt(100)*20;
+int ranYy = new Random().nextInt(50)*20;
 		// 1. Decide where to put the food by setting these variables
 		int foodLocationX;
 		int foodLocationY;
@@ -26,6 +32,38 @@ Robot canibalvictim = new Robot();
 		// If the food does not show up, you need to switch to Java 1.6
 
 		// 2. Choose a character for your food or leave it as *
+		
+		void start(){
+		rob.setX(ranX);
+			rob.setY(ranY);
+			canibalvictim.setX(ranXx);
+			canibalvictim.setY(ranYy);	
+			timer.setX(900);
+			timer.setY(50);
+		}
+			void timer() throws InterruptedException{
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/10");
+				TimeUnit.SECONDS.sleep(1); 
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/9");
+				TimeUnit.SECONDS.sleep(1);
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/8");
+				TimeUnit.SECONDS.sleep(1);
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/7");
+				TimeUnit.SECONDS.sleep(1);
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/6");
+				TimeUnit.SECONDS.sleep(1);
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/5");
+				TimeUnit.SECONDS.sleep(1);
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/4");
+				TimeUnit.SECONDS.sleep(1);
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/3");
+				TimeUnit.SECONDS.sleep(1);
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/2");
+				TimeUnit.SECONDS.sleep(1);
+				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/1");
+				JOptionPane.showMessageDialog(null, "Game over!");
+				System.exit(1);
+			}
 		
 
 		private void goUp()
@@ -60,7 +98,11 @@ Robot canibalvictim = new Robot();
 			int victimX =canibalvictim.getX();
 			int victimY =canibalvictim.getY();
 			if (robY == victimY & robX ==victimX){
+				canibalvictim.setX(ranX);
+				canibalvictim.setY(ranY);
 				JOptionPane.showMessageDialog(null, "Canibal wins!");
+				System.exit(1);
+				
 			}
 			
 			//int tortoiseLocationY = Tortoise.getY();
@@ -144,11 +186,14 @@ Robot canibalvictim = new Robot();
 
 		//TurtlePanel window = Tortoise.getBackgroundWindow();
 
-		public static void main(String[] args)
+		public static void main(String[] args) throws InterruptedException
 		{
+			
 			Feedtherobot2player feeder = new Feedtherobot2player();
 			feeder.controlTheTortoise();
 			feeder.feedTheTortoise();
+			feeder.start();
+			feeder.timer();
 		}
 
 		private void controlTheTortoise()
