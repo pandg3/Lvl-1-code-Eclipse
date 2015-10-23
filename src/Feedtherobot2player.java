@@ -42,25 +42,26 @@ int ranYy = new Random().nextInt(50)*20;
 			timer.setY(50);
 		}
 			void timer() throws InterruptedException{
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/10");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/10");
 				TimeUnit.SECONDS.sleep(1); 
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/9");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/9");
 				TimeUnit.SECONDS.sleep(1);
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/8");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/8");
 				TimeUnit.SECONDS.sleep(1);
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/7");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/7");
 				TimeUnit.SECONDS.sleep(1);
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/6");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/6");
 				TimeUnit.SECONDS.sleep(1);
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/5");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/5");
 				TimeUnit.SECONDS.sleep(1);
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/4");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/4");
 				TimeUnit.SECONDS.sleep(1);
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/3");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/3");
 				TimeUnit.SECONDS.sleep(1);
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/2");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/2");
 				TimeUnit.SECONDS.sleep(1);
-				timer.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/1");
+				timer.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/1");
+				TimeUnit.SECONDS.sleep(1);
 				JOptionPane.showMessageDialog(null, "Game over!");
 				System.exit(1);
 			}
@@ -202,8 +203,8 @@ int ranYy = new Random().nextInt(50)*20;
 			//Tortoise.show();
 			//Tortoise.setSpeed(10);
 	//Tortoise.getBackgroundWindow().setBackground(Colors.getRandomColor());
-			canibalvictim.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/Derp");
-rob.changeRobot("/Users/Guest/Documents/Lvl-1-code-Eclipse/src/ROBKILLER");
+			canibalvictim.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/Derp");
+rob.changeRobot("/Users/league/desktop/Lvl-1-code-Eclipse/src/ROBKILLER");
 		}
 
 		private void feedTheTortoise()
