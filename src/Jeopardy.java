@@ -4,7 +4,9 @@ import java.applet.AudioClip;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.SecondaryLoop;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,14 +31,15 @@ import javax.swing.JPanel;
 public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
-	private JButton thirdButton, fourthButton;
-
+	private JButton thirdButton;
+	private JButton fourthButton;
 	private JPanel quizPanel;
 	int score = 0;
 	JLabel scoreBox = new JLabel("0");
 	int buttonCount = 0;
 
 	public static void main(String[] args) {
+
 		new Jeopardy().start();
 	}
 
@@ -48,45 +51,60 @@ public class Jeopardy implements ActionListener {
 		frame.setVisible(true);
 		// 2. Give your frame a title
 		frame.setTitle("Jepordy!");
-		// 3. Create a JPanel variable to hold the header using the createHeader method
+		// 3. Create a JPanel variable to hold the header using the createHeader
+		// method
 		JPanel panel = createHeader("Games");
+		panel.setFont(new Font("Courier New", Font.BOLD, 50));
 		// 4. Add the header component to the quizPanel
 		quizPanel.add(panel);
 		// 5. Add the quizPanel to the frame
 		frame.add(quizPanel);
-		// 6. Use the firstButton variable to hold a button using the createButton method
+		// 6. Use the firstButton variable to hold a button using the
+		// createButton method
 		firstButton = createButton("$100");
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
 
 		// 7. Add the firstButton to the quizPanel
 
-		// 8. Write the code inside the createButton() method below. Check that your game looks like Figure 1 in the
+		// 8. Write the code inside the createButton() method below. Check that
+		// your game looks like Figure 1 in the
 		// Jeopardy Handout - http://bit.ly/1bvnvd4.
 		// DONE
-		// 9. Use the secondButton variable to hold a button using the createButton method
+		// 9. Use the secondButton variable to hold a button using the
+		// createButton method
 		secondButton = createButton("$200");
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
-		// 11. Add an action listener to the buttons (2 lines of code)
+
+		// 9. Use the secondButton variable to hold a button using the
+		// createButton method
+		thirdButton = createButton("$400");
+		quizPanel.add(thirdButton);
+		fourthButton = createButton("$800");
+		quizPanel.add(fourthButton);
 		firstButton.addActionListener(this);
 		secondButton.addActionListener(this);
+		thirdButton.addActionListener(this);
+		fourthButton.addActionListener(this);
 		// 12. Fill in the actionPerformed() method below
 
 		frame.pack();
 		quizPanel.setLayout(new GridLayout(buttonCount + 1, 3));
 		frame.add(makeScorePanel(), BorderLayout.NORTH);
-		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height, Toolkit.getDefaultToolkit().getScreenSize().width);
+		frame.setSize(Toolkit.getDefaultToolkit().getScreenSize().height,
+				Toolkit.getDefaultToolkit().getScreenSize().width);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	/*
 	 * 13. Use the method provided to play the Jeopardy theme music
 	 * 
-	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
+	 * 14. Add buttons so that you have $200, $400, $600, $800 and $1000
+	 * questions
 	 *
-	 * [optional] Use the showImage or playSound methods when the user answers a question [optional] Add new topics for
-	 * the quiz
+	 * [optional] Use the showImage or playSound methods when the user answers a
+	 * question [optional] Add new topics for the quiz
 	 */
 
 	private JButton createButton(String dollarAmount) {
@@ -95,7 +113,7 @@ public class Jeopardy implements ActionListener {
 		// Set the text of the button to the dollarAmount
 		Button1.setText(dollarAmount);
 		// Increment the buttonCount (this should make the layout vertical)
-		buttonCount += 2;
+		buttonCount += 1;
 		// Return your new button instead of the temporary button
 		System.out.println("THIS SHOULD WORK!!!");
 		return Button1;
@@ -108,13 +126,27 @@ public class Jeopardy implements ActionListener {
 		// Use the method that plays the jeopardy theme music.
 		playJeopardyTheme();
 		JButton buttonPressed = (JButton) arg0.getSource();
+		buttonPressed.setEnabled(false);
+		buttonPressed.setText("DONE");
 		// If the buttonPressed was the firstButton
 		if (buttonPressed == (firstButton)) {
-			askQuestion("What company created Mario?", "Nintendo", 100);
+			askQuestion("What company created Mario?(use all CAPS)", "NINTENDO", 100);
+		}
+		if (buttonPressed == (secondButton)) {
+			askQuestion("What company created the Xbox?(use all CAPS)", "MICROSOFT", 200);
+
+		}
+		if (buttonPressed == (thirdButton)) {
+			askQuestion("Did Microsoft buy Minecraft?(Yes or No)", "Yes", 400);
+		}
+		if (buttonPressed == (fourthButton)) {
+			askQuestion("What game from the company Valve do players want so much(Use the Abreviation and CAPS)", "HL3",
+					800);
 		}
 		// Call the askQuestion() method
 
-		// Fill in the askQuestion() method. When you play the game, the score should change.
+		// Fill in the askQuestion() method. When you play the game, the score
+		// should change.
 
 		// Or if the buttonPressed was the secondButton
 
@@ -132,9 +164,8 @@ public class Jeopardy implements ActionListener {
 		// If the answer is correct
 		if (answer.equals(correctAnswer)) {
 			score += prizeMoney;
-			firstButton.setEnabled(false);
-			firstButton.setText("DONE");
-			
+		} else {
+			score -= prizeMoney;
 		}
 		// Increase the score by the prizeMoney
 
@@ -155,7 +186,8 @@ public class Jeopardy implements ActionListener {
 
 	public void playJeopardyTheme() {
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
+			AudioInputStream audioInputStream = AudioSystem
+					.getAudioInputStream(new File("/Users/League/Google Drive/league-sounds/jeopardy.wav"));
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
 			clip.start();
