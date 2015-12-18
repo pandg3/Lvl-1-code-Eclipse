@@ -18,7 +18,7 @@ import javax.swing.SwingUtilities;
 public class FortuneTeller extends JPanel implements Runnable, MouseListener {
 
     BufferedImage fortuneTellerImage;
-
+    int random = new Random().nextInt(2);
     int frameWidth = 300;
     int frameHeight = 502;
 
@@ -57,10 +57,40 @@ sound.play();
    		 // 11. Use the pause() method below to wait until your music has finished
 
    		 // 12. Insert your completed Magic 8 ball recipe (http://bit.ly/Zdrf6d) here
+//2. Make a variable that will hold a random number and put a random number into this variable using "new Random().nextInt(4)"
+
+	// 3. Print out this variable
+System.out.println(random);
+
+	// 5. If the random number is 0
+if (random == 0){
+	JOptionPane.showMessageDialog(null, "Yes");
+}
+	// -- tell the user "Yes"
+
+	// 6. If the random number is 1
+if (random == 1){
+	JOptionPane.showMessageDialog(null, "No");
+}
+	// -- tell the user "No"
+
+	// 7. If the random number is 2
+if (random == 2){
+	JOptionPane.showMessageDialog(null, "Ask google or something! also you are still paying for this");
+}
+	// -- tell the user "Maybe you should ask Google?"
+
+	// 8. If the random number is 3
+if (random == 3){
+	JOptionPane.showMessageDialog(null, "I think you allready know");
+}
+	// -- write your own answer
+
+}
 
    	 }
 
-    }
+    
 
     private boolean areClose(int mouseX, int secretLocationX) {
    	 return mouseX < secretLocationX + 15 && mouseX > secretLocationX - 15;
