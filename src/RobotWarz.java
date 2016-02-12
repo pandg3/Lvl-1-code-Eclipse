@@ -16,7 +16,7 @@ private void down(){
 	int y = rob.getY();
 	rob.setY(y-=10);
 }
-public boolean dispatchKeyEvent(KeyEvent e)
+public void dispatchKeyEvent(KeyEvent e)
 {
 	if (e.getID() == KeyEvent.KEY_PRESSED)
 	{
